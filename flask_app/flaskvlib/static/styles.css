@@ -1,0 +1,37 @@
+/* Style pour centrer la page */
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Style pour le formulaire de recherche */
+form {
+    margin: 20px auto;
+    width: 300px;
+}
+
+/* Style pour le tableau de données */
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+/* Style pour les liens de modification et de suppression */
+a {
+    text-decoration: none;
+    color: #0074D9;
+}
+
+a:hover {
+    color: #0056b3;
+}

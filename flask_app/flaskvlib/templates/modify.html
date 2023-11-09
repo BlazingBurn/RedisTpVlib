@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modifier la station</title>
+    <link rel="stylesheet" type="text/css" href="/static/modify.css"> 
+</head>
+<body>
+    <h1>Modifier la station</h1>
+    <form method="POST">
+        <label for="new_station_name">Nom de la station :</label>
+        <input type="text" name="new_station_name" value="{{ station_data.station }}">
+        <br>
+
+        <label for="new_status">Statut :</label>
+        <select name="new_status">
+            <option value="OUI" {% if station_data.status == 'OUI' %}selected{% endif %}>OUI</option>
+            <option value="NON" {% if station_data.status == 'NON' %}selected{% endif %}>NON</option>
+        </select>
+        <br>
+
+        <label for="new_capacity">Capacité :</label>
+        <input type="text" name="new_capacity" value="{{ station_data.capacity }}">
+        <br>
+
+        <label for="new_nbbornettesLibre">Nombre de bornettes libres :</label>
+        <input type="text" name="new_nbbornettesLibre" value="{{ station_data.nbbornettesLibre }}">
+        <br>
+
+        <label for="new_nbtotalvelodispo">Nombre total de vélos disponibles :</label>
+        <input type="text" name="new_nbtotalvelodispo" value="{{ station_data.nbtotalvelodispo }}">
+        <br>
+
+        <label for="new_velomecadispo">Nombre de vélos mécaniques disponibles :</label>
+        <input type="text" name="new_velomecadispo" value="{{ station_data.velomecadispo }}">
+        <br>
+
+        <label for="new_veloelecdispo">Nombre de vélos électriques disponibles :</label>
+        <input type="text" name="new_veloelecdispo" value="{{ station_data.veloelecdispo }}">
+        <br>
+
+        <label for="new_bornedispo">Borne disponible :</label>
+        <select name="new_bornedispo">
+            <option value="OUI" {% if station_data.bornedispo == 'OUI' %}selected{% endif %}>OUI</option>
+            <option value="NON" {% if station_data.bornedispo == 'NON' %}selected{% endif %}>NON</option>
+        </select>
+        <br>
+
+        <label for="new_retourvelip">Retour Vélib :</label>
+        <select name="new_retourvelip">
+            <option value="OUI" {% if station_data.retourvelip == 'OUI' %}selected{% endif %}>OUI</option>
+            <option value="NON" {% if station_data.retourvelip == 'NON' %}selected{% endif %}>NON</option>
+        </select>
+        <br>
+
+        <label for="new_actualisation">Date d'actualisation :</label>
+        <input type="text" name="new_actualisation"  value="{{ current_date }}" readonly>
+        <br>
+
+        <label for="new_commune">Commune :</label>
+        <input type="text" name="new_commune" value="{{ station_data.commune }}">
+        <br>
+
+        <input type="submit" value="Enregistrer">
+    </form>
+</body>
+</html>

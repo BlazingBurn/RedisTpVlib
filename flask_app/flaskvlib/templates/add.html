@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ajouter une nouvelle station Vélib</title>
+    <link rel="stylesheet" type="text/css" href="/static/add.css"> 
+</head>
+<body>
+    <h1>Ajouter une nouvelle station Vélib</h1>
+    <form method="POST" action="/add">
+        <label for="new_id">ID :</label>
+        <input type="text" name="new_id" required><br>
+
+        <label for="new_station_name">Nom de la station :</label>
+        <input type="text" name="new_station_name" required><br>
+
+        <!-- Champs pour Statut -->
+        <label for="new_status">Statut :</label>
+        <select name="new_status">
+            <option value="OUI">OUI</option>
+            <option value="NON">NON</option>
+        </select><br>
+
+        <label for="new_capacity">Capacité :</label>
+        <input type="text" name="new_capacity" required><br>
+
+        <label for="new_nbbornettesLibre">Nombre de bornettes libres :</label>
+        <input type="text" name="new_nbbornettesLibre" required><br>
+
+        <label for="new_nbtotalvelodispo">Nombre total de vélos disponibles :</label>
+        <input type="text" name="new_nbtotalvelodispo" required><br>
+
+        <label for="new_velomecadispo">Nombre de vélos mécaniques disponibles :</label>
+        <input type="text" name="new_velomecadispo" required><br>
+
+        <label for="new_veloelecdispo">Nombre de vélos électriques disponibles :</label>
+        <input type="text" name="new_veloelecdispo" required><br>
+
+        <!-- Champs pour Borne disponible -->
+        <label for="new_bornedispo">Borne disponible :</label>
+        <select name="new_bornedispo">
+            <option value="OUI">OUI</option>
+            <option value="NON">NON</option>
+        </select><br>
+
+        <!-- Champs pour Retour Vélib -->
+        <label for="new_retourvelip">Retour Vélib :</label>
+        <select name="new_retourvelip">
+            <option value="OUI">OUI</option>
+            <option value="NON">NON</option>
+        </select><br>
+
+        <label for="new_actualisation">Date d'actualisation :</label>
+        <input type="text" name="new_actualisation" value="{{ current_date }}" readonly><br>
+
+        <label for="new_commune">Commune :</label>
+        <input type="text" name="new_commune" required><br>
+
+        <input type="submit" value="Ajouter">
+    </form>
+</body>
+</html>

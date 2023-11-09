@@ -1,0 +1,32 @@
+/* Style pour centrer la page */
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Style pour le formulaire de modification */
+form {
+    margin: 20px auto;
+    width: 300px;
+}
+
+/* Style pour les champs de formulaire */
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin: 6px 0;
+    box-sizing: border-box;
+}
+
+/* Style pour le bouton d'enregistrement */
+input[type="submit"] {
+    background-color: #0074D9;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}

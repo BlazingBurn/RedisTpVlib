@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recherche de station</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css"> 
+</head>
+<body>
+    <h1>Recherche de station</h1>
+    <form method="POST">
+        <label for="commune">Nom de la commune:</label>
+        <input type="text" id="commune" name="commune">
+        <br>
+        <label for="station">Nom de la station:</label>
+        <input type="text" id="station" name="station">
+        <br>
+        <input type="submit" value="Rechercher">
+    </form>
+
+    <!-- Bouton d'ajout -->
+    <a href="/add">Ajouter une nouvelle station</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Station</th>
+                <th>Status</th>
+                <!-- Ajoutez d'autres en-têtes de colonne ici -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for station in data %}
+                <tr>
+                    <td>{{ station.id }}</td>
+                    <td>{{ station.station }}</td>
+                    <td>{{ station.status }}</td>
+                    <td>
+                        <a href="{{ url_for('modify', id=station.id) }}">Modifier</a>
+                    </td>
+                    <td>
+                        <a href="{{ url_for('delete_data', id=station.id) }}">Supprimer</a>
+                    </td>
+                    <!-- Ajoutez d'autres colonnes ici -->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
