@@ -17,6 +17,7 @@ def randomStation():
         station_info = {
             "id": station_data.get(b'id').decode('utf-8'),
             "station": station_data.get(b'station').decode('utf-8'),
+            "commune": station_data.get(b'commune').decode('utf-8'),
             "status": station_data.get(b'status').decode('utf-8'),
             # Ajoutez d'autres champs ici
         }

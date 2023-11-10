@@ -9,11 +9,9 @@ from flaskvlib.services.randomStations import randomStation
 logging.basicConfig(level=logging.DEBUG)
 
 
-random_stations_data = randomStation()
-
-
 @app.route('/', methods=['GET', 'POST'])
 def search_data():
+    random_stations_data = randomStation()
     data = []
 
     commune = request.form.get('commune')
@@ -34,11 +32,13 @@ def search_data():
                     data.append({
                         "id": station_data.get(b'id').decode('utf-8'),
                         "station": station_station,
+                        "commune": station_commune,
                         "status": station_data.get(b'status').decode('utf-8'),
                         # Ajoutez d'autres champs ici
                     })
             if not data:
                 flash("Aucun résultat trouvé. Veuillez ajuster votre recherche.", "error")
+                data = random_stations_data
     
     # Si aucune recherche n'a été effectuée, affichez les données aléatoires
     else:
@@ -124,7 +124,7 @@ def add_data():
                 'commune': request.form.get('new_commune')
             }
 
-            redis_client.hsetnx(f'vlibid:{new_id}', mapping=data)
+            redis_client.hset(f'vlibid:{new_id}', mapping=data)
 
             return redirect('/')
 

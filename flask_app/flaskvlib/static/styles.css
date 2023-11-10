@@ -35,7 +35,7 @@ input[type="submit"] {
 
 table {
     border-collapse: collapse;
-    width: 80%;
+    width: 85%;
     margin: 20px auto;
     border: 1px solid #ddd;
 }
@@ -92,12 +92,12 @@ a[href="/add"]:hover {
 
 .button-container a.details-btn {
     background-color: #485da1;
-    margin-right: 5px;
+    margin-right: 3px;
 }
 
 .button-container a.modify-btn {
     background-color: #4CAF50;
-    margin-right: 5px;
+    margin-right: 3px;
 }
 
 .button-container a.delete-btn {
