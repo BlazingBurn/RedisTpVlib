@@ -16,15 +16,16 @@ random_stations_data = randomStation()
 def search_data():
     data = []
 
-    if request.method == 'POST':
+    commune = request.form.get('commune')
+    station_name = request.form.get('station')
+    
+    if request.method == 'POST' and (commune != '' or station_name != ''):
         data = []
-        commune = request.form.get('commune')
-        station_name = request.form.get('station')
 
         if commune or station_name:
-            keys = redis_client.keys("vlibid:*")
+            keys = redis_slave.keys("vlibid:*")
             for key in keys:
-                station_data = redis_client.hgetall(key)
+                station_data = redis_slave.hgetall(key)
                 station_commune = station_data.get(b'commune').decode('utf-8')
                 station_station = station_data.get(b'station').decode('utf-8')
 
@@ -68,7 +69,6 @@ def modify(id):
         new_veloelecdispo = request.form.get('new_veloelecdispo')
         new_bornedispo = request.form.get('new_bornedispo')
         new_retourvelip = request.form.get('new_retourvelip')
-        new_actualisation = request.form.get('new_actualisation')
         new_commune = request.form.get('new_commune')
 
         # Mise a jour redis
@@ -81,7 +81,7 @@ def modify(id):
         redis_client.hset(station_key, 'veloelecdispo', new_veloelecdispo)
         redis_client.hset(station_key, 'bornedispo', new_bornedispo)
         redis_client.hset(station_key, 'retourvelip', new_retourvelip)
-        redis_client.hset(station_key, 'actualisation', new_actualisation)
+        redis_client.hset(station_key, 'actualisation', current_date)
         redis_client.hset(station_key, 'commune', new_commune)
 
         return redirect('/')

@@ -55,7 +55,11 @@
         <label for="new_commune">Commune :</label>
         <input type="text" name="new_commune" required><br>
 
-        <input type="submit" value="Ajouter">
+        <div class="button-container">
+            <input type="submit" value="Ajouter">
+            <!-- Bouton Annuler -->
+            <a href="{{ url_for('search_data') }}" class="cancel-btn">Annuler</a>
+        </div>
     </form>
 </body>
 </html>

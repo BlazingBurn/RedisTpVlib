@@ -17,7 +17,7 @@
     </form>
 
     <!-- Bouton d'ajout -->
-    <a href="/add">Ajouter une nouvelle station</a>
+    <a href="/add">Ajouter station</a>
 
     <table>
         <thead>
@@ -25,6 +25,7 @@
                 <th>ID</th>
                 <th>Station</th>
                 <th>Status</th>
+                <th>Admin</th>
                 <!-- Ajoutez d'autres en-têtes de colonne ici -->
             </tr>
         </thead>
@@ -34,11 +35,11 @@
                     <td>{{ station.id }}</td>
                     <td>{{ station.station }}</td>
                     <td>{{ station.status }}</td>
-                    <td>
-                        <a href="{{ url_for('modify', id=station.id) }}">Modifier</a>
-                    </td>
-                    <td>
-                        <a href="{{ url_for('delete_data', id=station.id) }}">Supprimer</a>
+                    <td class="td-button-container">
+                        <div class="button-container">
+                            <a class="modify-btn" href="{{ url_for('modify', id=station.id) }}">Modifier</a>
+                            <a class="delete-btn" href="{{ url_for('delete_data', id=station.id) }}">Supprimer</a>
+                        </div>
                     </td>
                     <!-- Ajoutez d'autres colonnes ici -->
                 </tr>
