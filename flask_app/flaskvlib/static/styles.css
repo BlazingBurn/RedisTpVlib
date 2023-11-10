@@ -1,37 +1,79 @@
-/* Style pour centrer la page */
+/* styles.css */
+
 body {
-    text-align: center;
+    background-color: #f4f4f4; /* Couleur de fond */
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-/* Style pour le formulaire de recherche */
+h1 {
+    text-align: center;
+    color: #333; /* Couleur du texte */
+}
+
 form {
-    margin: 20px auto;
-    width: 300px;
+    margin-top: 20px;
+    text-align: center;
 }
 
-/* Style pour le tableau de données */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555; /* Couleur du texte du label */
+}
+
+input[type="text"], input[type="submit"] {
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50; /* Couleur de fond du bouton */
+    color: white; /* Couleur du texte du bouton */
+    cursor: pointer;
+}
+
 table {
-    width: 80%;
-    margin: 20px auto;
     border-collapse: collapse;
-}
-
-table, th, td {
-    border: 1px solid #ccc;
+    width: 80%;
+    margin: 20px auto; /* Centrer le tableau */
+    border: 1px solid #ddd; /* Bordure du tableau */
 }
 
 th, td {
-    padding: 8px;
+    padding: 12px;
     text-align: left;
+    border-bottom: 1px solid #ddd; /* Bordure entre les lignes */
 }
 
-/* Style pour les liens de modification et de suppression */
+th {
+    background-color: #4CAF50; /* Couleur de fond de l'en-tête */
+    color: white; /* Couleur du texte de l'en-tête */
+}
+
 a {
     text-decoration: none;
-    color: #0074D9;
+    color: #3498db; /* Couleur du lien */
 }
 
 a:hover {
-    color: #0056b3;
+    color: #1e67b8; /* Couleur du lien au survol */
+}
+
+a[href="/add"] {
+    display: block;
+    margin: 20px auto; /* Marge pour centrer */
+    padding: 10px;
+    background-color: #3498db; /* Couleur de fond du bouton */
+    color: white; /* Couleur du texte du bouton */
+    text-align: center;
+    width: 150px; /* Largeur du bouton */
+    border-radius: 5px; /* Coins arrondis */
+    text-decoration: none;
+}
+
+a[href="/add"]:hover {
+    background-color: #1e67b8; /* Couleur de fond du bouton au survol */
 }
