@@ -81,13 +81,18 @@ a[href="/add"]:hover {
     justify-content: center;
 }
 
-.button-container a.modify-btn, .button-container a.delete-btn {
+.button-container a.modify-btn, .button-container a.delete-btn, .button-container a.details-btn {
     padding: 12px;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     display: inline-block;
+}
+
+.button-container a.details-btn {
+    background-color: #485da1;
+    margin-right: 5px;
 }
 
 .button-container a.modify-btn {
@@ -99,7 +104,44 @@ a[href="/add"]:hover {
     background-color: #e74c3c;
 }
 
+.button-container a.details-btn:hover,
 .button-container a.modify-btn:hover,
 .button-container a.delete-btn:hover {
     opacity: 0.8;
+}
+
+/* Ajoutez ces styles pour les flèches de tri */
+.table-sort th {
+    cursor: pointer;
+    position: relative;
+}
+
+.table-sort th::after {
+    content: '\2191'; /* Flèche vers le haut */
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+    opacity: 0.5;
+}
+
+.table-sort.th-sorted-asc::after {
+    content: '\2191'; /* Flèche vers le haut */
+}
+
+.table-sort.th-sorted-desc::after {
+    content: '\2193'; /* Flèche vers le bas */
+}
+
+.flash-messages {
+    margin: 20px auto;
+}
+
+.flash-message {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #e74c3c; /* Couleur rouge */
+    color: white;
+    border-radius: 5px;
+    text-align: center;
 }

@@ -5,6 +5,16 @@
     <link rel="stylesheet" type="text/css" href="/static/add.css"> 
 </head>
 <body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash-messages">
+            {% for message in messages %}
+                <div class="flash-message">{{ message }}</div>
+            {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
     <h1>Ajouter une nouvelle station Vélib</h1>
     <form method="POST" action="/add">
         <label for="new_id">ID :</label>

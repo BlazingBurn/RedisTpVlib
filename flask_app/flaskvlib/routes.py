@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_redis import FlaskRedis
 from datetime import datetime
 from flaskvlib import app, redis_client, redis_slave
@@ -37,6 +37,8 @@ def search_data():
                         "status": station_data.get(b'status').decode('utf-8'),
                         # Ajoutez d'autres champs ici
                     })
+            if not data:
+                flash("Aucun résultat trouvé. Veuillez ajuster votre recherche.", "error")
     
     # Si aucune recherche n'a été effectuée, affichez les données aléatoires
     else:
@@ -97,18 +99,13 @@ def add_data():
     if request.method == 'POST':
         new_id = request.form.get('new_id')
         new_station_name = request.form.get('new_station_name')
-        new_status = request.form.get('new_status')
-        new_capacity = request.form.get('new_capacity')
-        new_nbbornettesLibre = request.form.get('new_nbbornettesLibre')
-        new_nbtotalvelodispo = request.form.get('new_nbtotalvelodispo')
-        new_velomecadispo = request.form.get('new_velomecadispo')
-        new_veloelecdispo = request.form.get('new_veloelecdispo')
-        new_bornedispo = request.form.get('new_bornedispo')
-        new_retourvelip = request.form.get('new_retourvelip')
-        new_actualisation = request.form.get('new_actualisation')
-        new_commune = request.form.get('new_commune')
 
         # S'assurer que le nouvel ID est unique avant d'ajouter la station
+
+        # Vérifier si l'ID existe déjà
+        if redis_client.exists(f'vlibid:{new_id}'):
+            flash('L\'ID de la station existe déjà. Veuillez utiliser un ID unique.', 'error')
+            return redirect('/add')
 
         if not redis_client.exists(f'vlibid:{new_id}'):
 
@@ -127,7 +124,7 @@ def add_data():
                 'commune': request.form.get('new_commune')
             }
 
-            redis_client.hset(f'vlibid:{new_id}', mapping=data)
+            redis_client.hsetnx(f'vlibid:{new_id}', mapping=data)
 
             return redirect('/')
 
@@ -144,3 +141,15 @@ def delete_data(id):
     else:
         # Gérer le cas où la station n'existe pas ou a déjà été supprimée
         return "La station n'existe pas ou a déjà été supprimée."
+
+
+@app.route('/details/<int:id>')
+def details(id):
+    station_key = f'vlibid:{id}'
+    station_data = redis_client.hgetall(station_key)
+
+    decoded_station_data = {}
+    for key, value in station_data.items():
+        decoded_station_data[key.decode('utf-8')] = value.decode('utf-8')
+
+    return render_template('details.html', station_data=decoded_station_data)

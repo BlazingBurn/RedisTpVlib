@@ -67,3 +67,15 @@ select {
     margin-bottom: 15px;
 }
 
+.flash-messages {
+    margin: 20px auto;
+}
+
+.flash-message {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #e74c3c; /* Couleur rouge */
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+}

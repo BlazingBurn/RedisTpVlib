@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails de la station {{ station_data.id }}</title>
+    <link rel="stylesheet" type="text/css" href="/static/details.css"> 
+</head>
+<body>
+    <h1>Détails de la station {{ station_data.id }}</h1>
+    <ul>
+        <li><strong>ID :</strong> {{ station_data.id }}</li>
+        <li><strong>Station :</strong> {{ station_data.station }}</li>
+        <li><strong>Status :</strong> {{ station_data.status }}</li>
+        <li><strong>Capacité :</strong> {{ station_data.capacity }}</li>
+        <li><strong>Bornettes Libres :</strong> {{ station_data.nbbornettesLibre }}</li>
+        <li><strong>Vélos Disponibles :</strong> {{ station_data.nbtotalvelodispo }}</li>
+        <li><strong>Vélos Mécaniques :</strong> {{ station_data.velomecadispo }}</li>
+        <li><strong>Vélos Électriques :</strong> {{ station_data.veloelecdispo }}</li>
+        <li><strong>Borne Disponible :</strong> {{ station_data.bornedispo }}</li>
+        <li><strong>Retour Vélib :</strong> {{ station_data.retourvelip }}</li>
+        <li><strong>Actualisation :</strong> {{ station_data.actualisation }}</li>
+        <li><strong>Commune :</strong> {{ station_data.commune }}</li>
+        <!-- Ajoutez d'autres éléments de détail ici -->
+    </ul>
+    <a href="/" class="back-btn">Retour au menu</a>
+</body>
+</html>
